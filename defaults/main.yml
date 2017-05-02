@@ -1,0 +1,4 @@
+---
+wa_kat:
+  packages: present # present, absent, latest
+  release: v1.1.8 # HEAD for latest
