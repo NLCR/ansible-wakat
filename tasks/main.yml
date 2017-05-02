@@ -4,12 +4,12 @@
     name: git, docker, docker-python
     state: '{{ wa_kat.state | default("present") }}'
 
-- name: Clone WA-KAT repo to /opt/git/wa-kat
+- name: 'Clone WA-KAT: {{ wa_kat.release | default("HEAD") }} to {{ wa_kat.path | default ("/opt/git/wa-kat") }}'
   git:
    repo: 'https://github.com/WebarchivCZ/WA-KAT.git'
    accept_hostkey: True
    force: yes
-   dest: /opt/git/wa-kat
+   dest: '{{ wa_kat.path | default("/opt/git/wa-kat") }}'
    version: '{{ wa_kat.release | default("HEAD") }}'
 
 - name: Docker is running even after restart
@@ -18,14 +18,15 @@
     state: started
     enabled: True
 
-- name: Building wa-kat from repo
+- name: 'Building wa-kat: {{ wa_kat.release | default("HEAD") }} from repo'
   docker_image:
-    path: /opt/git/wa-kat
+    path: '{{ wa_kat.path | default("/opt/git/wa-kat") }}'
     name: wa-kat
     tag: '{{ wa_kat.release | default("latest") }}'
 
 - name: 'wa-kat: {{ wa_kat.release | default("latest") }} image is running'
   docker_container:
-    name: 'wa-kat_{{ wa_kat.release | default("latest") }}'
+    name: 'wa-kat'
     image: 'wa-kat:{{ wa_kat.release | default("latest") }}'
     state: started
+    ports: '{{ wa_kat.port | default("8080") }}:8080'

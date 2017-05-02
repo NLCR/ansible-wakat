@@ -1,4 +1,6 @@
 ---
 wa_kat:
+  repo: /opt/git/wa-kat
   packages: present # present, absent, latest
-  release: v1.1.8 # HEAD for latest
+  release: HEAD # HEAD for latest, for specific release: v1.1.8
+  port: 8080
