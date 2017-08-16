@@ -1,6 +1,6 @@
 galaxy_info:
   author: Rudolf Kreibich
-  description: your description
+  description: https://github.com/WebarchivCZ/WA-KAT served in docker container
   company: National Library of the Czech Republic
 
   # If the issue tracker for your role is not on github, uncomment the

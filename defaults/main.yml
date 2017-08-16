@@ -4,4 +4,3 @@ wa_kat:
   packages: present # present, absent, latest
   release: HEAD # HEAD for latest, for specific release: v1.1.8
   port: 8080
-  hostname: '{{ ansible_nodename }}'

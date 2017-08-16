@@ -30,14 +30,3 @@
     image: 'wa-kat:{{ wa_kat.release | default("latest") }}'
     state: started
     ports: '{{ wa_kat.port | default("8080") }}:8080'
-
-- name: Configuration for NGINX is present
-  template:
-    src: "{{ item.src }}"
-    dest: "{{ item.dest }}"
-  with_items:
-    - { src: "nginx-wakat.conf.j2", dest: "/etc/nginx/conf.d/wakat.conf" }
-  tags: config
-  notify:
-    - reload nginx
-  when: wa_kat.hostname is defined
