@@ -24,6 +24,7 @@
     path: '{{ wa_kat.path | default("/opt/git/wa-kat") }}'
     name: wa-kat
     tag: '{{ wa_kat.release | default("latest") }}'
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: 'wa-kat: {{ wa_kat.release | default("latest") }} image is running'
   docker_container:
