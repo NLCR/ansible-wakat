@@ -11,6 +11,7 @@
    force: yes
    dest: '{{ wa_kat.path | default("/opt/git/wa-kat") }}'
    version: '{{ wa_kat.release | default("HEAD") }}'
+  ignore_errors: "{{ ansible_check_mode }}"
 
 - name: Docker is running even after restart
   service:
