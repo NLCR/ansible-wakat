@@ -32,3 +32,4 @@
     image: 'wa-kat:{{ wa_kat.release | default("latest") }}'
     state: started
     ports: '{{ wa_kat.port | default("8080") }}:8080'
+  ignore_errors: "{{ ansible_check_mode }}"
